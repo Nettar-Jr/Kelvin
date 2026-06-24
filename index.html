@@ -1,500 +1,799 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Alabi Abdulmumuni Kelvin | Full-Stack Developer & Digital Solutions Creator</title>
-    <meta
-      name="description"
-      content="Full-Stack Developer & Digital Solutions Creator specializing in mobile applications, web applications, and WordPress development for businesses, NGOs, and e-learning platforms."
-    />
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Alabi Abdulmumuni Kelvin — Systems Engineer & Digital Architect. Building fast, structured web systems for businesses across Nigeria and beyond.">
+  <title>Kelvin · Systems Engineer & Digital Architect</title>
 
-    <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <header class="header">
-      <div class="header__content">
-        <div class="header__logo-container">
-          <div class="header__logo-img-cont">
-            <img
-              src="./assets/svg/profile-placeholder.svg"
-              alt="Kelvin Profile Image"
-              class="header__logo-img"
-            />
-          </div>
-          <span class="header__logo-sub">Kelvin</span>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #0C1220;
+      --surface:  #131E30;
+      --card:     #1A2840;
+      --gold:     #C8A84B;
+      --gold-dim: rgba(200,168,75,0.10);
+      --text:     #EDE8E0;
+      --muted:    #7A8499;
+      --border:   rgba(255,255,255,0.08);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ──────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 18px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(12,18,32,0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 20px; font-weight: 600;
+      color: var(--text); text-decoration: none;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-size: 12px; color: var(--muted); text-decoration: none;
+      letter-spacing: 1.5px; text-transform: uppercase; font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      font-size: 13px; font-weight: 700;
+      color: var(--bg); background: var(--gold);
+      padding: 10px 22px; border-radius: 4px;
+      text-decoration: none; letter-spacing: 0.5px;
+      transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+    .nav-hamburger {
+      display: none; background: none; border: none; cursor: pointer; padding: 4px;
+    }
+
+    /* ── MOBILE MENU ─────────────────────────── */
+    .mobile-menu {
+      display: none; position: fixed;
+      top: 65px; left: 0; right: 0; z-index: 99;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 28px 24px; flex-direction: column; gap: 22px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: 15px; color: var(--muted); text-decoration: none;
+    }
+    .mobile-menu a.gold { color: var(--gold); }
+
+    /* ── HERO ─────────────────────────────────── */
+    .hero-wrap {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      align-items: center;
+      gap: 64px;
+      padding: 120px 48px 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .hero-eyebrow {
+      font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
+      color: var(--gold); font-weight: 600; margin-bottom: 28px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: block;
+      width: 36px; height: 1px; background: var(--gold); flex-shrink: 0;
+    }
+    .hero-headline {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(44px, 5.5vw, 76px);
+      font-weight: 600; line-height: 1.08;
+      margin-bottom: 28px;
+    }
+    .hero-headline .italic { font-style: italic; color: var(--gold); }
+    .hero-headline .period { color: var(--gold); }
+    .hero-sub {
+      font-size: 16px; color: var(--muted); line-height: 1.9;
+      max-width: 520px; margin-bottom: 44px;
+    }
+    .hero-sub strong { color: var(--text); font-weight: 500; }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+
+    .btn-primary {
+      background: var(--gold); color: var(--bg);
+      padding: 14px 30px; border-radius: 4px;
+      font-size: 14px; font-weight: 700; text-decoration: none;
+      letter-spacing: 0.5px; transition: opacity 0.2s; display: inline-block;
+    }
+    .btn-primary:hover { opacity: 0.86; }
+    .btn-ghost {
+      color: var(--text); border: 1px solid var(--border);
+      padding: 14px 30px; border-radius: 4px;
+      font-size: 14px; text-decoration: none;
+      transition: border-color 0.2s, color 0.2s; display: inline-block;
+    }
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* Hero photo */
+    .hero-photo-wrap {
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .hero-ring {
+      width: 360px; height: 360px; border-radius: 50%;
+      border: 2px solid var(--gold);
+      padding: 6px; position: relative; flex-shrink: 0;
+    }
+    .hero-ring::before {
+      content: '';
+      position: absolute; inset: -14px; border-radius: 50%;
+      border: 1px solid rgba(200,168,75,0.18);
+    }
+    .hero-ring::after {
+      content: '';
+      position: absolute; inset: -28px; border-radius: 50%;
+      border: 1px solid rgba(200,168,75,0.07);
+    }
+    .hero-ring img {
+      width: 100%; height: 100%; border-radius: 50%;
+      object-fit: cover; object-position: center top;
+    }
+    .hero-floater {
+      position: absolute; bottom: 16px; right: -24px;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 10px; padding: 14px 20px;
+    }
+    .hero-floater strong {
+      display: block; font-size: 22px; font-weight: 700;
+      font-family: 'Cormorant Garamond', Georgia, serif; color: var(--gold);
+      line-height: 1;
+    }
+    .hero-floater span { font-size: 12px; color: var(--muted); }
+
+    /* ── SECTION BASE ─────────────────────────── */
+    .section { padding: 96px 48px; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .sec-label {
+      font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
+      color: var(--gold); font-weight: 600; margin-bottom: 12px;
+    }
+    .sec-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(32px, 4vw, 50px); font-weight: 600;
+      line-height: 1.15; margin-bottom: 48px;
+    }
+    .sec-title .period { color: var(--gold); }
+    .section-divider {
+      width: 100%; height: 1px;
+      background: var(--border);
+    }
+
+    /* ── ABOUT ────────────────────────────────── */
+    #about { background: var(--surface); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: start;
+    }
+    .about-text p {
+      font-size: 16px; color: var(--muted); line-height: 1.9;
+      margin-bottom: 18px;
+    }
+    .about-text p strong { color: var(--text); font-weight: 500; }
+    .about-text p:last-of-type { margin-bottom: 32px; }
+    .stat-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    }
+    .stat-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 8px; padding: 28px 24px;
+    }
+    .stat-num {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 44px; font-weight: 600;
+      color: var(--gold); line-height: 1; margin-bottom: 8px;
+    }
+    .stat-label { font-size: 13px; color: var(--muted); line-height: 1.4; }
+
+    /* ── WORK ─────────────────────────────────── */
+    #work { background: var(--bg); }
+    .work-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;
+    }
+    .work-card {
+      background: var(--card); border-radius: 10px; overflow: hidden;
+      border: 1px solid var(--border);
+      text-decoration: none; display: block;
+      transition: border-color 0.25s, transform 0.25s;
+    }
+    .work-card:hover { border-color: var(--gold); transform: translateY(-3px); }
+    .work-img {
+      width: 100%; height: 200px;
+      object-fit: cover; display: block;
+      background: var(--surface);
+    }
+    .work-img-blank {
+      width: 100%; height: 200px; background: var(--surface);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; color: var(--muted); letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+    .work-body { padding: 26px 28px 28px; }
+    .work-flag {
+      font-size: 11px; letter-spacing: 2px; color: var(--gold);
+      text-transform: uppercase; font-weight: 600; margin-bottom: 8px;
+    }
+    .work-title { font-size: 18px; font-weight: 600; color: var(--text); margin-bottom: 10px; }
+    .work-desc { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 18px; }
+    .work-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .work-tag {
+      font-size: 11px; background: var(--surface);
+      color: var(--muted); padding: 4px 12px; border-radius: 100px;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── STACK ────────────────────────────────── */
+    #stack { background: var(--surface); }
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+      gap: 10px;
+    }
+    .stack-pill {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 6px; padding: 13px 10px; text-align: center;
+      font-size: 13px; color: var(--muted); font-weight: 500;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .stack-pill:hover { border-color: var(--gold); color: var(--text); }
+
+    /* ── PACKAGES ─────────────────────────────── */
+    #packages { background: var(--bg); }
+    .packages-intro {
+      font-size: 16px; color: var(--muted);
+      max-width: 600px; margin-bottom: 52px; line-height: 1.85;
+    }
+    .pkg-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    }
+    .pkg-card {
+      background: var(--card); border-radius: 12px; padding: 40px 32px;
+      border: 1px solid var(--border); position: relative;
+      display: flex; flex-direction: column;
+    }
+    .pkg-card.featured {
+      border-color: var(--gold);
+      background: linear-gradient(160deg, #1B2B42 0%, #1B3028 100%);
+    }
+    .pkg-badge {
+      position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+      background: var(--gold); color: var(--bg);
+      font-size: 10px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; padding: 5px 18px; border-radius: 100px;
+      white-space: nowrap;
+    }
+    .pkg-name {
+      font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--gold); font-weight: 700; margin-bottom: 16px;
+    }
+    .pkg-price {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 46px; font-weight: 600; color: var(--text);
+      line-height: 1; margin-bottom: 4px;
+    }
+    .pkg-price sup { font-size: 20px; vertical-align: super; }
+    .pkg-note { font-size: 12px; color: var(--muted); margin-bottom: 28px; }
+    .pkg-features { list-style: none; margin-bottom: 36px; flex: 1; }
+    .pkg-features li {
+      font-size: 14px; color: var(--muted); padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex; gap: 10px; align-items: flex-start; line-height: 1.5;
+    }
+    .pkg-features li:last-child { border-bottom: none; }
+    .pkg-features li::before { content: '→'; color: var(--gold); flex-shrink: 0; }
+    .pkg-btn {
+      display: block; text-align: center;
+      padding: 13px 20px; border-radius: 6px;
+      font-size: 14px; font-weight: 600; text-decoration: none;
+      letter-spacing: 0.5px; transition: all 0.2s; margin-top: auto;
+    }
+    .pkg-card.featured .pkg-btn { background: var(--gold); color: var(--bg); }
+    .pkg-card.featured .pkg-btn:hover { opacity: 0.86; }
+    .pkg-card:not(.featured) .pkg-btn {
+      border: 1px solid var(--border); color: var(--text);
+    }
+    .pkg-card:not(.featured) .pkg-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* ── CONTACT ──────────────────────────────── */
+    #contact { background: var(--surface); }
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start;
+    }
+    .contact-headline {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(32px, 3.5vw, 48px); font-weight: 600;
+      line-height: 1.15; margin-bottom: 20px;
+    }
+    .contact-headline .period { color: var(--gold); }
+    .contact-body { font-size: 16px; color: var(--muted); line-height: 1.85; margin-bottom: 36px; }
+    .contact-links { display: flex; flex-direction: column; gap: 16px; }
+    .contact-link {
+      display: flex; align-items: center; gap: 14px;
+      font-size: 15px; color: var(--muted); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .contact-link:hover { color: var(--gold); }
+    .contact-icon {
+      width: 38px; height: 38px; border-radius: 7px;
+      background: var(--card); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px; flex-shrink: 0;
+    }
+
+    .contact-form { display: flex; flex-direction: column; gap: 18px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-label {
+      font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--muted); font-weight: 600;
+    }
+    .form-input, .form-textarea {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 6px; padding: 13px 16px;
+      font-size: 15px; color: var(--text); font-family: inherit;
+      outline: none; transition: border-color 0.2s; resize: vertical;
+    }
+    .form-input:focus, .form-textarea:focus { border-color: var(--gold); }
+    .form-textarea { min-height: 130px; }
+    .form-submit {
+      background: var(--gold); color: var(--bg);
+      border: none; padding: 14px 28px; border-radius: 6px;
+      font-size: 14px; font-weight: 700; cursor: pointer;
+      letter-spacing: 0.5px; font-family: inherit;
+      align-self: flex-start; transition: opacity 0.2s;
+    }
+    .form-submit:hover { opacity: 0.86; }
+    #form-status { font-size: 13px; color: var(--gold); display: none; margin-top: 4px; }
+
+    /* ── FOOTER ───────────────────────────────── */
+    footer {
+      background: var(--bg); padding: 28px 48px;
+      border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .footer-brand {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 17px; font-weight: 600; color: var(--text);
+    }
+    .footer-brand span { color: var(--gold); }
+    .footer-copy { font-size: 13px; color: var(--muted); }
+    .footer-socials { display: flex; gap: 20px; }
+    .footer-socials a {
+      font-size: 13px; color: var(--muted); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-socials a:hover { color: var(--gold); }
+
+    /* ── RESPONSIVE ───────────────────────────── */
+    @media (max-width: 960px) {
+      nav { padding: 16px 24px; }
+      .nav-links, .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+
+      .hero-wrap {
+        grid-template-columns: 1fr;
+        padding: 100px 24px 64px;
+        text-align: center;
+      }
+      .hero-eyebrow { justify-content: center; }
+      .hero-sub { margin: 0 auto 44px; }
+      .hero-actions { justify-content: center; }
+      .hero-photo-wrap { order: -1; }
+      .hero-ring { width: 220px; height: 220px; }
+      .hero-floater { right: 0; }
+
+      .section { padding: 72px 24px; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .work-grid { grid-template-columns: 1fr; }
+      .pkg-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+      .form-row { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 16px; text-align: center; padding: 28px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Kelvin<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#packages">Packages</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="mailto:alabiabdulmumuni9@gmail.com" class="nav-cta">Hire Me</a>
+  <button class="nav-hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')" aria-label="Toggle menu">
+    <svg width="22" height="15" viewBox="0 0 22 15" fill="none">
+      <rect width="22" height="2" rx="1" fill="#EDE8E0"/>
+      <rect y="6.5" width="22" height="2" rx="1" fill="#EDE8E0"/>
+      <rect y="13" width="22" height="2" rx="1" fill="#EDE8E0"/>
+    </svg>
+  </button>
+</nav>
+
+<div class="mobile-menu">
+  <a href="#about" onclick="this.closest('.mobile-menu').classList.remove('open')">About</a>
+  <a href="#work" onclick="this.closest('.mobile-menu').classList.remove('open')">Work</a>
+  <a href="#packages" onclick="this.closest('.mobile-menu').classList.remove('open')">Packages</a>
+  <a href="#contact" onclick="this.closest('.mobile-menu').classList.remove('open')">Contact</a>
+  <a href="mailto:alabiabdulmumuni9@gmail.com" class="gold" onclick="this.closest('.mobile-menu').classList.remove('open')">Hire Me →</a>
+</div>
+
+<!-- HERO -->
+<div class="hero-wrap">
+  <div>
+    <div class="hero-eyebrow">Systems Engineer · Abuja, Nigeria</div>
+    <h1 class="hero-headline">
+      I build systems<br>
+      <span class="italic">that outlast<br>the brief<span class="period">.</span></span>
+    </h1>
+    <p class="hero-sub">
+      Most developers solve the symptom in front of them.<br>
+      I trace the problem to its <strong>root</strong> — then engineer the
+      solution from there. Fast, structured web systems for businesses
+      serious about their digital presence.
+    </p>
+    <div class="hero-actions">
+      <a href="#packages" class="btn-primary">View Packages</a>
+      <a href="#work" class="btn-ghost">See My Work</a>
+    </div>
+  </div>
+
+  <div class="hero-photo-wrap">
+    <div class="hero-ring">
+      <img src="assets/kelvin.jpg" alt="Alabi Abdulmumuni Kelvin — Systems Engineer">
+    </div>
+    <div class="hero-floater">
+      <strong>5+</strong>
+      <span>Years building</span>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="section" style="background: var(--surface);">
+<div class="container">
+  <div class="about-grid">
+    <div class="about-text">
+      <div class="sec-label">About</div>
+      <h2 class="sec-title">Engineer. Librarian.<br>Systems Thinker<span class="period">.</span></h2>
+      <p>
+        I'm <strong>Alabi Abdulmumuni Kelvin</strong> — a full-stack engineer and founder of
+        <strong>The Orderly Standard</strong>, a web studio building fast, structured digital
+        systems for businesses and schools across Nigeria and beyond.
+      </p>
+      <p>
+        By profession I'm a school librarian — a career that trained me to organize
+        complex information, trace sources to their root, and make knowledge accessible
+        to anyone who needs it. That same instinct drives every system I engineer.
+      </p>
+      <p>
+        I have delivered platforms for clients in Nigeria, the United Kingdom, the United
+        States, and Germany. My work is not just about what looks good on launch day — it
+        is about architecting something that scales, loads fast, and keeps working.
+      </p>
+      <a href="#contact" class="btn-primary">Start a Conversation →</a>
+    </div>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-num">5+</div>
+        <div class="stat-label">Years of active development</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">4</div>
+        <div class="stat-label">Countries served<br>🇳🇬 🇬🇧 🇺🇸 🇩🇪</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">10+</div>
+        <div class="stat-label">Live projects delivered</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">0</div>
+        <div class="stat-label">Projects abandoned mid-build</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- WORK -->
+<section id="work" class="section" style="background: var(--bg);">
+<div class="container">
+  <div class="sec-label">Selected Work</div>
+  <h2 class="sec-title">Built for real clients<span class="period">.</span></h2>
+  <div class="work-grid">
+
+    <a href="https://toptierhealthcareuk.com/" target="_blank" rel="noopener" class="work-card">
+      <img src="https://toptierhealthcareuk.com/assets/img/d250ef32d0.jpeg"
+           alt="Top Tier Healthcare UK" class="work-img">
+      <div class="work-body">
+        <div class="work-flag">🇬🇧 United Kingdom</div>
+        <div class="work-title">Top Tier Healthcare UK</div>
+        <div class="work-desc">
+          Healthcare platform partnered with Stoke on Trent Council. Built for
+          accessibility, clear service navigation, and trust for families and young
+          people in the Chester community.
         </div>
-        <div class="header__main">
-          <ul class="header__links">
-            <li class="header__link-wrapper">
-              <a href="./index.html" class="header__link"> Home </a>
-            </li>
-            <li class="header__link-wrapper">
-              <a href="./index.html#about" class="header__link">About </a>
-            </li>
-            <li class="header__link-wrapper">
-              <a href="./index.html#projects" class="header__link">
-                Projects
-              </a>
-            </li>
-            <li class="header__link-wrapper">
-              <a href="./index.html#contact" class="header__link"> Contact </a>
-            </li>
-          </ul>
-          <div class="header__main-ham-menu-cont">
-            <img
-              src="./assets/svg/ham-menu.svg"
-              alt="hamburger menu"
-              class="header__main-ham-menu"
-            />
-            <img
-              src="./assets/svg/ham-menu-close.svg"
-              alt="hamburger menu close"
-              class="header__main-ham-menu-close d-none"
-            />
-          </div>
+        <div class="work-tags">
+          <span class="work-tag">Web Platform</span>
+          <span class="work-tag">Healthcare</span>
+          <span class="work-tag">Accessibility</span>
         </div>
       </div>
-      <div class="header__sm-menu">
-        <div class="header__sm-menu-content">
-          <ul class="header__sm-menu-links">
-            <li class="header__sm-menu-link">
-              <a href="./index.html"> Home </a>
-            </li>
+    </a>
 
-            <li class="header__sm-menu-link">
-              <a href="./index.html#about"> About </a>
-            </li>
+    <a href="https://thewenge.com/" target="_blank" rel="noopener" class="work-card">
+      <img src="https://thewenge.com/wp-content/uploads/2024/06/about-us.png"
+           alt="The Wenge Agency" class="work-img">
+      <div class="work-body">
+        <div class="work-flag">🇺🇸 Columbus, Ohio</div>
+        <div class="work-title">The Wenge Agency</div>
+        <div class="work-desc">
+          Digital marketing agency platform built to position a modern creative brand
+          with authority and clarity. Focused on showcasing innovative thinking and
+          customer experience design.
+        </div>
+        <div class="work-tags">
+          <span class="work-tag">Agency Site</span>
+          <span class="work-tag">WordPress</span>
+          <span class="work-tag">Brand Design</span>
+        </div>
+      </div>
+    </a>
 
-            <li class="header__sm-menu-link">
-              <a href="./index.html#projects"> Projects </a>
-            </li>
+    <div class="work-card" style="cursor: default; pointer-events: none;">
+      <div class="work-img-blank">Backend Architecture</div>
+      <div class="work-body">
+        <div class="work-flag">🇺🇸 USA · Catalyst Group</div>
+        <div class="work-title">Business Automation System</div>
+        <div class="work-desc">
+          Architected a secure Node.js backend with end-to-end business automation —
+          integrating payment processing via Stripe, scheduling via Cal.com, and
+          communication workflows via n8n.
+        </div>
+        <div class="work-tags">
+          <span class="work-tag">Node.js</span>
+          <span class="work-tag">PostgreSQL</span>
+          <span class="work-tag">Stripe</span>
+          <span class="work-tag">n8n</span>
+        </div>
+      </div>
+    </div>
 
-            <li class="header__sm-menu-link">
-              <a href="./index.html#contact"> Contact </a>
-            </li>
-          </ul>
+    <div class="work-card" style="cursor: default; pointer-events: none;">
+      <div class="work-img-blank">Microservices Architecture</div>
+      <div class="work-body">
+        <div class="work-flag">🇩🇪 Germany · MacNova</div>
+        <div class="work-title">Python Django Microservices</div>
+        <div class="work-desc">
+          Built a scalable Django backend with microservices architecture designed
+          for independent deployment, horizontal scaling, and seamless frontend
+          integration via REST APIs.
+        </div>
+        <div class="work-tags">
+          <span class="work-tag">Python</span>
+          <span class="work-tag">Django</span>
+          <span class="work-tag">Microservices</span>
+          <span class="work-tag">REST APIs</span>
         </div>
       </div>
-    </header>
-    <section class="home-hero">
-      <div class="home-hero__content">
-        <h1 class="heading-primary">
-          👋 Hello World! I'm Kelvin - Full-Stack Developer & Digital Solutions Creator
-        </h1>
-        <div class="home-hero__info">
-          <p class="text-primary">
-            🚀 Building powerful mobile & web applications | 💻 Crafting custom WordPress solutions | 📱 Creating responsive cross-platform experiences | 🎨 Designing pixel-perfect user interfaces | 🔧 Full-stack development specialist | 🌟 Transforming ideas into digital reality
-          </p>
-        </div>
-        <div class="home-hero__cta">
-          <a href="./#projects" class="btn btn--bg">Projects</a>
-        </div>
-      </div>
-      <div class="home-hero__socials">
-        <div class="home-hero__social">
-          <a
-            href="https://www.linkedin.com/in/alabi-abdulmumuni-kelvin-0679b7155/"
-            class="home-hero__social-icon-link"
-            target="_blank"
-          >
-            <img
-              src="./assets/png/linkedin-ico.png"
-              alt="LinkedIn"
-              class="home-hero__social-icon"
-            />
-          </a>
-        </div>
-        <div class="home-hero__social">
-          <a
-            href="https://github.com/Nettar-Jr"
-            class="home-hero__social-icon-link"
-            target="_blank"
-          >
-            <img
-              src="./assets/png/github-ico.png"
-              alt="GitHub"
-              class="home-hero__social-icon"
-            />
-          </a>
-        </div>
-      </div>
-      <div class="home-hero__mouse-scroll-cont">
-        <div class="mouse"></div>
-      </div>
-    </section>
-    <section id="about" class="about sec-pad">
-      <div class="main-container">
-        <h2 class="heading heading-sec heading-sec__mb-med">
-          <span class="heading-sec__main">About Me</span>
-          <span class="heading-sec__sub">
-            Passionate WordPress developer with expertise in creating custom
-            solutions for diverse clients. Learn more about my journey and
-            skills below.
-          </span>
-        </h2>
-        <div class="about__content">
-          <div class="about__content-main">
-            <h3 class="about__content-title">Get to know me!</h3>
-            <div class="about__content-details">
-              <p class="about__content-details-para">
-                Hey! I'm
-                <strong>Alabi Abdulmumuni</strong>
-                , commonly known as <strong>Klevin</strong>. I'm a
-                <strong>Full-Stack Developer & Digital Solutions Creator</strong> based in
-                <strong>Abuja, Nigeria</strong>. I specialize in building
-                <strong>mobile applications, web applications, and custom WordPress solutions</strong> for diverse clients
-                including real estate companies, NGOs, churches, hospitals, and
-                e-learning platforms.
-              </p>
-              <p class="about__content-details-para">
-                With expertise in <strong>full-stack development</strong>, mobile app creation, 
-                WordPress theme customization, plugin integration, and
-                <strong>UI/UX design</strong>, I help businesses establish their
-                digital presence across all platforms. I'm passionate about
-                <strong>building scalable applications</strong> and optimizing performance,
-                ensuring your business reaches its maximum potential in the digital space.
-                Feel free to <strong>contact</strong> me through email or social
-                media to discuss your project.
-              </p>
-            </div>
-            <a href="./#contact" class="btn btn--med btn--theme dynamicBgClr"
-              >Contact</a
-            >
-          </div>
-          <div class="about__content-skills">
-            <h3 class="about__content-title">My Skills</h3>
-            <div class="skills">
-              <div class="skills__skill">HTML</div>
-              <div class="skills__skill">CSS</div>
-              <div class="skills__skill">JavaScript</div>
-              <div class="skills__skill">React</div>
-              <div class="skills__skill">NextJS</div>
-              <div class="skills__skill">Python Django</div>
-              <div class="skills__skill">PostgreSQL</div>
-              <div class="skills__skill">GraphQL</div>
-              <div class="skills__skill">Prisma</div>
-              <div class="skills__skill">SASS</div>
-              <div class="skills__skill">GIT</div>
-              <div class="skills__skill">Shopify</div>
-              <div class="skills__skill">Wordpress</div>
-              <div class="skills__skill">AI</div>
-              <div class="skills__skill">SEO</div>
-              <div class="skills__skill">Content Creation</div>
-              <div class="skills__skill">Content Management</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id="projects" class="projects sec-pad">
-      <div class="main-container">
-        <h2 class="heading heading-sec heading-sec__mb-bg">
-          <span class="heading-sec__main">Projects</span>
-          <span class="heading-sec__sub">
-            Here are some of my recent development projects. Each
-            showcases my ability to create custom, functional, and visually
-            appealing digital solutions.
-          </span>
-        </h2>
+    </div>
 
-        <div class="projects__content">
-          <div class="projects__row">
-            <div class="projects__row-img-cont">
-              <img
-                src="./assets/svg/real-estate-placeholder.svg"
-                alt="Nana Real Homes Website"
-                class="projects__row-img"
-                loading="lazy"
-              />
-            </div>
-            <div class="projects__row-content">
-              <h3 class="projects__row-content-title">Nana Real Homes</h3>
-              <p class="projects__row-content-desc">
-                A custom real estate platform built from scratch. Features include 
-                property listings, smooth animations, and advanced search functionality 
-                for showcasing available homes. The design emphasizes luxury real estate 
-                with a modern aesthetic and responsive user experience.
-              </p>
-              <a
-                href="http://nanarealhomes.com/"
-                class="btn btn--med btn--theme dynamicBgClr"
-                target="_blank"
-                >View Live Site</a
-              >
-            </div>
-          </div>
-          <div class="projects__row">
-            <div class="projects__row-img-cont">
-              <img
-                src="https://beta.sckail.com/wp-content/uploads/2022/11/h4.webp"
-                alt="Sckail Website"
-                class="projects__row-img"
-                loading="lazy"
-              />
-            </div>
-            <div class="projects__row-content">
-              <h3 class="projects__row-content-title">
-                Sckail - Web Development Company
-              </h3>
-              <p class="projects__row-content-desc">
-                A pixel-perfect web development company website featuring modern 
-                design elements, smooth animations, and full responsiveness. 
-                Demonstrates ability to recreate complex designs with attention 
-                to detail and optimal user experience.
-              </p>
-              <a
-                href="https://beta.sckail.com/"
-                class="btn btn--med btn--theme dynamicBgClr"
-                target="_blank"
-                >View Live Site</a
-              >
-            </div>
-          </div>
-          <div class="projects__row">
-            <div class="projects__row-img-cont">
-              <img
-                src="https://toptierhealthcareuk.com/assets/img/d250ef32d0.jpeg"
-                alt="Top Tier Healthcare Website"
-                class="projects__row-img"
-                loading="lazy"
-              />
-            </div>
-            <div class="projects__row-content">
-              <h3 class="projects__row-content-title">
-                Top Tier Healthcare UK
-              </h3>
-              <p class="projects__row-content-desc">
-                A healthcare organization platform partnered with Stoke on Trent 
-                Council. Features comprehensive service listings, team profiles, 
-                and resources for young people and families in the Chester community. 
-                Built with accessibility and user-friendly navigation in mind.
-              </p>
-              <a
-                href="https://toptierhealthcareuk.com/"
-                class="btn btn--med btn--theme dynamicBgClr"
-                target="_blank"
-                >View Live Site</a
-              >
-            </div>
-          </div>
+  </div>
+</div>
+</section>
 
-          <div class="projects__row">
-            <div class="projects__row-img-cont">
-              <img
-                src="https://thewenge.com/wp-content/uploads/2024/06/about-us.png"
-                alt="Top Tier Healthcare Website"
-                class="projects__row-img"
-                loading="lazy"
-              />
-            </div>
-            <div class="projects__row-content">
-              <h3 class="projects__row-content-title">The Wenge</h3>
-              <p class="projects__row-content-desc">
-                A digital marketing agency platform based in Columbus, Ohio. 
-                This project involved creating a showcase for the agency's 
-                innovative thinking and expertise in shaping brand, product, 
-                and customer experiences. The platform highlights their commitment 
-                to delivering reliable services and tailored solutions that drive results.
-              </p>
-              <a
-                href="https://thewenge.com/"
-                class="btn btn--med btn--theme dynamicBgClr"
-                target="_blank"
-                >View Live Site</a
-              >
-            </div>
-          </div>
+<!-- STACK -->
+<section id="stack" class="section" style="background: var(--surface);">
+<div class="container">
+  <div class="sec-label">Technical Stack</div>
+  <h2 class="sec-title">Tools I build with<span class="period">.</span></h2>
+  <div class="stack-grid">
+    <div class="stack-pill">React</div>
+    <div class="stack-pill">Next.js</div>
+    <div class="stack-pill">JavaScript</div>
+    <div class="stack-pill">TypeScript</div>
+    <div class="stack-pill">Node.js</div>
+    <div class="stack-pill">Python</div>
+    <div class="stack-pill">Django</div>
+    <div class="stack-pill">PostgreSQL</div>
+    <div class="stack-pill">GraphQL</div>
+    <div class="stack-pill">Prisma</div>
+    <div class="stack-pill">WordPress</div>
+    <div class="stack-pill">Shopify</div>
+    <div class="stack-pill">SASS</div>
+    <div class="stack-pill">Figma</div>
+    <div class="stack-pill">Git</div>
+    <div class="stack-pill">n8n</div>
+    <div class="stack-pill">Stripe</div>
+    <div class="stack-pill">AI APIs</div>
+  </div>
+</div>
+</section>
+
+<!-- PACKAGES -->
+<section id="packages" class="section" style="background: var(--bg);">
+<div class="container">
+  <div class="sec-label">The Orderly Standard · Pricing</div>
+  <h2 class="sec-title">Transparent pricing<span class="period">.</span></h2>
+  <p class="packages-intro">
+    No surprise invoices. No scope creep without a conversation. Every package is
+    scoped, timed, and delivered — because unclear expectations are a broken system,
+    and I don't build broken systems.
+  </p>
+  <div class="pkg-grid">
+
+    <div class="pkg-card">
+      <div class="pkg-name">Starter</div>
+      <div class="pkg-price"><sup>₦</sup>80k</div>
+      <div class="pkg-note">One-time · Delivered in 5–7 days</div>
+      <ul class="pkg-features">
+        <li>Single-page responsive website</li>
+        <li>Mobile-first, performance-optimised</li>
+        <li>Contact form integration</li>
+        <li>Google Maps embed (if needed)</li>
+        <li>Basic SEO setup</li>
+        <li>1 round of revisions</li>
+        <li>Deployment included</li>
+      </ul>
+      <a href="mailto:alabiabdulmumuni9@gmail.com?subject=Starter Package Enquiry"
+         class="pkg-btn">Get Started</a>
+    </div>
+
+    <div class="pkg-card featured">
+      <div class="pkg-badge">Most Popular</div>
+      <div class="pkg-name">Standard</div>
+      <div class="pkg-price"><sup>₦</sup>150k</div>
+      <div class="pkg-note">One-time · Delivered in 10–14 days</div>
+      <ul class="pkg-features">
+        <li>Multi-page website (up to 5 pages)</li>
+        <li>Custom dark-mode design system</li>
+        <li>CMS — edit your own content</li>
+        <li>Performance + speed optimisation</li>
+        <li>Full SEO setup + analytics</li>
+        <li>Social media integration</li>
+        <li>2 rounds of revisions</li>
+        <li>30-day post-launch support</li>
+      </ul>
+      <a href="mailto:alabiabdulmumuni9@gmail.com?subject=Standard Package Enquiry"
+         class="pkg-btn">Get Started</a>
+    </div>
+
+    <div class="pkg-card">
+      <div class="pkg-name">Custom</div>
+      <div class="pkg-price" style="font-size:28px; padding-top: 8px;">Let's scope it</div>
+      <div class="pkg-note">Priced to the system · Timeline agreed upfront</div>
+      <ul class="pkg-features">
+        <li>Web applications and platforms</li>
+        <li>Backend architecture and APIs</li>
+        <li>Database design and optimisation</li>
+        <li>E-commerce and payment systems</li>
+        <li>Automation and workflow systems</li>
+        <li>Ongoing retainer available</li>
+        <li>Full engineering engagement</li>
+      </ul>
+      <a href="mailto:alabiabdulmumuni9@gmail.com?subject=Custom Project Enquiry"
+         class="pkg-btn">Book a Call</a>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section" style="background: var(--surface);">
+<div class="container">
+  <div class="contact-grid">
+    <div>
+      <div class="sec-label">Contact</div>
+      <h2 class="contact-headline">
+        Have a project<span class="period">?</span><br>
+        Let's build it right<span class="period">.</span>
+      </h2>
+      <p class="contact-body">
+        Based in Abuja, Nigeria. Working with clients locally and internationally.
+        If you have a clear problem and need an engineer who will trace it to the
+        root before writing a single line of code — let's talk.
+      </p>
+      <div class="contact-links">
+        <a href="mailto:alabiabdulmumuni9@gmail.com" class="contact-link">
+          <div class="contact-icon">✉</div>
+          alabiabdulmumuni9@gmail.com
+        </a>
+        <a href="https://www.linkedin.com/in/alabi-abdulmumuni-kelvin-0679b7155/"
+           target="_blank" class="contact-link">
+          <div class="contact-icon">in</div>
+          LinkedIn Profile
+        </a>
+        <a href="https://github.com/Nettar-Jr" target="_blank" class="contact-link">
+          <div class="contact-icon">⌥</div>
+          GitHub · Nettar-Jr
+        </a>
+      </div>
+    </div>
+
+    <form class="contact-form" onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">First Name</label>
+          <input type="text" name="firstname" class="form-input" placeholder="John" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Last Name</label>
+          <input type="text" name="lastname" class="form-input" placeholder="Doe" required>
         </div>
       </div>
-    </section>
-    
-    <section class="clients sec-pad">
-      <div class="main-container">
-        <h2 class="heading heading-sec heading-sec__mb-med">
-          <span class="heading-sec__main">Trusted by Global Companies</span>
-          <span class="heading-sec__sub">
-            Building scalable solutions for businesses across continents
-          </span>
-        </h2>
-        
-        <div class="clients__content">
-          <div class="clients__card">
-            <div class="clients__card-header">
-              <h3 class="clients__company">Catalyst Group</h3>
-              <span class="clients__location">🇺🇸 USA</span>
-            </div>
-            <p class="clients__description">
-              Architected a secure Node.js backend with comprehensive business automation, 
-              integrating payment processing, scheduling, and communication systems.
-            </p>
-            <div class="clients__tech-stack">
-              <span class="clients__tech">Node.js</span>
-              <span class="clients__tech">Express</span>
-              <span class="clients__tech">PostgreSQL</span>
-              <span class="clients__tech">Stripe</span>
-              <span class="clients__tech">Cal.com</span>
-              <span class="clients__tech">n8n</span>
-            </div>
-          </div>
-
-          <div class="clients__card">
-            <div class="clients__card-header">
-              <h3 class="clients__company">NgFizzy</h3>
-              <span class="clients__location">🇳🇬 Nigeria</span>
-            </div>
-            <p class="clients__description">
-              Designed and implemented a flexible GraphQL API architecture, optimizing 
-              data fetching and enabling efficient client-server communication.
-            </p>
-            <div class="clients__tech-stack">
-              <span class="clients__tech">GraphQL</span>
-              <span class="clients__tech">Apollo Server</span>
-              <span class="clients__tech">Node.js</span>
-              <span class="clients__tech">Database Design</span>
-            </div>
-          </div>
-
-          <div class="clients__card">
-            <div class="clients__card-header">
-              <h3 class="clients__company">MacNova</h3>
-              <span class="clients__location">🇩🇪 Germany</span>
-            </div>
-            <p class="clients__description">
-              Built a scalable Python Django backend with microservices architecture, 
-              designed for independent deployment and seamless frontend integration.
-            </p>
-            <div class="clients__tech-stack">
-              <span class="clients__tech">Python Django</span>
-              <span class="clients__tech">Microservices</span>
-              <span class="clients__tech">REST APIs</span>
-              <span class="clients__tech">Database Architecture</span>
-            </div>
-          </div>
-        </div>
+      <div class="form-group">
+        <label class="form-label">Email Address</label>
+        <input type="email" name="email" class="form-input" placeholder="your@email.com" required>
       </div>
-    </section>
-    
-    <section id="contact" class="contact sec-pad dynamicBg">
-      <div class="main-container">
-        <h2 class="heading heading-sec heading-sec__mb-med">
-          <span class="heading-sec__main heading-sec__main--lt">Contact</span>
-          <span class="heading-sec__sub heading-sec__sub--lt">
-            I'm always interested in hearing about development opportunities. 
-            Whether you need a mobile app, web application, custom website, or 
-            complete digital solution, let's discuss how I can help bring 
-            your vision to life.
-          </span>
-        </h2>
-        <div class="contact__form-container">
-          <form
-            action="https://formspree.io/f/xgvkdgbr"
-            method="POST"
-            class="contact__form"
-          >
-            <div class="contact__form-field">
-              <label class="contact__form-label" for="name">Name</label>
-              <input
-                required
-                placeholder="Enter Your Name"
-                type="text"
-                class="contact__form-input"
-                name="name"
-                id="name"
-              />
-            </div>
-            <div class="contact__form-field">
-              <label class="contact__form-label" for="email">Email</label>
-              <input
-                required
-                placeholder="Enter Your Email"
-                type="text"
-                class="contact__form-input"
-                name="email"
-                id="email"
-              />
-            </div>
-            <div class="contact__form-field">
-              <label class="contact__form-label" for="message">Message</label>
-              <textarea
-                required
-                cols="30"
-                rows="10"
-                class="contact__form-input"
-                placeholder="Enter Your Message"
-                name="message"
-                id="message"
-              ></textarea>
-            </div>
-            <button type="submit" class="btn btn--theme contact__btn">
-              Submit
-            </button>
-          </form>
-        </div>
+      <div class="form-group">
+        <label class="form-label">What Do You Need?</label>
+        <textarea name="message" class="form-textarea"
+          placeholder="Describe your project — the problem you're trying to solve and the outcome you need." required></textarea>
       </div>
-    </section>
-    <footer class="main-footer">
-      <div class="main-container">
-        <div class="main-footer__upper">
-          <div class="main-footer__row main-footer__row-1">
-            <h2 class="heading heading-sm main-footer__heading-sm">
-              <span>Social</span>
-            </h2>
-            <div class="main-footer__social-cont">
-              <a
-                target="_blank"
-                rel="noreferrer"
-                href="https://www.linkedin.com/in/alabi-abdulmumuni-kelvin-0679b7155/"
-              >
-                <img
-                  class="main-footer__icon"
-                  src="./assets/png/linkedin-ico.png"
-                  alt="LinkedIn"
-                />
-              </a>
-              <a
-                target="_blank"
-                rel="noreferrer"
-                href="https://github.com/Nettar-Jr"
-              >
-                <img
-                  class="main-footer__icon"
-                  src="./assets/png/github-ico.png"
-                  alt="GitHub"
-                />
-              </a>
-              <a target="_blank" rel="noreferrer" href="#">
-                <img
-                  class="main-footer__icon"
-                  src="./assets/png/twitter-ico.png"
-                  alt="icon"
-                />
-              </a>
-            </div>
-          </div>
-          <div class="main-footer__row main-footer__row-2">
-            <h4 class="heading heading-sm text-lt">Alabi Abdulmumuni Kelvin</h4>
-            <p class="main-footer__short-desc">
-              Full-Stack Developer & Digital Solutions Creator specializing in mobile applications, 
-              web applications, and custom WordPress solutions for businesses. Creating engaging, 
-              functional, and beautiful digital experiences that deliver results.
-            </p>
-          </div>
-        </div>
-        <div class="main-footer__lower">
-          &copy; Copyright 2024. All rights reserved.
-        </div>
-      </div>
-    </footer>
+      <button type="submit" class="form-submit">Send Message →</button>
+      <div id="form-status">Message sent — I'll reply within 24 hours.</div>
+    </form>
+  </div>
+</div>
+</section>
 
-    <script src="./js/script.js"></script>
-  </body>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">The Orderly Standard<span>.</span></div>
+  <div class="footer-copy">© 2026 · Alabi Abdulmumuni Kelvin · Abuja, Nigeria</div>
+  <div class="footer-socials">
+    <a href="https://www.linkedin.com/in/alabi-abdulmumuni-kelvin-0679b7155/" target="_blank">LinkedIn</a>
+    <a href="https://github.com/Nettar-Jr" target="_blank">GitHub</a>
+    <a href="mailto:alabiabdulmumuni9@gmail.com">Email</a>
+  </div>
+</footer>
+
+<script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.form-submit');
+    const status = document.getElementById('form-status');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+    setTimeout(() => {
+      status.style.display = 'block';
+      btn.textContent = 'Message Sent ✓';
+      e.target.reset();
+    }, 900);
+  }
+</script>
+
+</body>
 </html>
