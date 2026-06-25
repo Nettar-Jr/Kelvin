@@ -798,17 +798,47 @@
 </footer>
 
 <script>
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     const btn = e.target.querySelector('.form-submit');
     const status = document.getElementById('form-status');
+    const form = e.target;
+
     btn.textContent = 'Sending...';
     btn.disabled = true;
-    setTimeout(() => {
-      status.style.display = 'block';
-      btn.textContent = 'Message Sent ✓';
-      e.target.reset();
-    }, 900);
+    status.style.display = 'none';
+    status.style.color = 'var(--gold)';
+
+    const body = JSON.stringify({
+      firstname: form.firstname.value,
+      lastname: form.lastname.value,
+      email: form.email.value,
+      message: form.message.value
+    });
+
+    try {
+      const res = await fetch('/.netlify/functions/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body
+      });
+
+      if (res.ok) {
+        status.textContent = 'Message sent. I will reply within 24 hours.';
+        status.style.color = 'var(--gold)';
+        form.reset();
+      } else {
+        status.textContent = 'Something went wrong. Please email me directly.';
+        status.style.color = '#E85454';
+      }
+    } catch {
+      status.textContent = 'Could not connect. Please email me directly.';
+      status.style.color = '#E85454';
+    }
+
+    status.style.display = 'block';
+    btn.textContent = 'Send Message →';
+    btn.disabled = false;
   }
 </script>
 
