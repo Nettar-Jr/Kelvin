@@ -1,38 +1,41 @@
+const https = require('https');
+
 exports.handler = async (event) => {
-  // Only allow POST requests
   if (event.httpMethod !== 'POST') {
-    return {
-      statusCode: 405,
-      body: JSON.stringify({ error: 'Method Not Allowed' }),
-    };
+    return { statusCode: 405, body: 'Method Not Allowed' };
   }
 
-  try {
-    const body = JSON.parse(event.body);
-    const { name, email, message } = body;
+  const { firstname, lastname, email, message } = JSON.parse(event.body);
 
-    // Validate required fields
-    if (!name || !email || !message) {
-      return {
-        statusCode: 400,
-        body: JSON.stringify({ error: 'Missing required fields' }),
-      };
-    }
+  const payload = JSON.stringify({
+    from: 'Contact Form <onboarding@resend.dev>',
+    to: 'alabiabdulmumuni9@gmail.com',
+    subject: `New message from ${firstname} ${lastname}`,
+    html: `<p><strong>Name:</strong> ${firstname} ${lastname}</p>
+           <p><strong>Email:</strong> ${email}</p>
+           <p><strong>Message:</strong><br/>${message}</p>`
+  });
 
-    // TODO: Implement email sending logic here
-    // You can use services like SendGrid, Mailgun, or AWS SES
-
-    console.log('Form submission received:', { name, email, message });
-
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ message: 'Message sent successfully' }),
-    };
-  } catch (error) {
-    console.error('Error processing contact form:', error);
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ error: 'Internal server error' }),
-    };
-  }
+  return new Promise((resolve) => {
+    const req = https.request({
+      hostname: 'api.resend.com',
+      path: '/emails',
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
+        'Content-Type': 'application/json',
+        'Content-Length': Buffer.byteLength(payload)
+      }
+    }, (res) => {
+      resolve({
+        statusCode: res.statusCode === 200 || res.statusCode === 201 ? 200 : 500,
+        body: res.statusCode === 200 || res.statusCode === 201
+          ? 'Message sent successfully'
+          : 'Failed to send message'
+      });
+    });
+    req.on('error', () => resolve({ statusCode: 500, body: 'Server error' }));
+    req.write(payload);
+    req.end();
+  });
 };
