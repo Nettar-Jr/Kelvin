@@ -1,201 +1,89 @@
-# Kelvin · Systems Engineer & Digital Architect 🔨
+# Kelvin · Systems Engineer & Digital Architect
 
-## Professional Portfolio for Alabi Abdulmumuni Kelvin
+This is the portfolio website for **Alabi Abdulmumuni Kelvin**, founder of **The Orderly Standard**—a web studio that builds fast, structured digital systems for clients across healthcare, consulting, tech, and education. Operating from Nigeria, Kelvin serves clients across the UK, USA, and Germany.
 
-A clean, modern, and fully responsive portfolio website showcasing systems engineering expertise and digital solutions.
+## Philosophy
 
-<br/>
+Alabi's core mission: **eliminate chaos and prevent helplessness**. He builds systems that give people their peace back—whether that's organizing a library, architecting a web application, or designing client workflows. His work is not about quick fixes or day-one aesthetics; it's about stability, clarity, and systems designed for the long term.
 
----
+## About Kelvin
 
-<br/>
+Alabi is a problem solver by instinct. He bridges the gap between human needs and digital solutions by combining two unlikely disciplines: Information Science (as a professional librarian) and self-taught mastery of web engineering. That combination is rare—and it's precisely what his clients benefit from.
 
-## About
+With **5+ years of active development** and **10+ live projects delivered** across **4 countries** (🇳🇬 🇬🇧 🇺🇸 🇩🇪), his work is designed not for day-one aesthetics, but for stability, legacy, and long-term clarity.
 
-This portfolio website is designed to showcase my work as a **Systems Engineer and Problem Solver**. I build digital systems that eliminate chaos and prevent helplessness for businesses across Nigeria and beyond.
+## What the site includes
 
-**Website**: Hosted on Netlify  
-**Contact**: alabiabdulmumuni9@gmail.com
+- **Hero section** – Introduction and call-to-action
+- **About section** – Background, expertise, and key statistics (5+ years, 4 countries, 10+ projects)
+- **Selected Work section** – Featured projects including Catalyst Group (USA enterprise consultancy), Chaptrr (UK retail media network), and in-progress builds for Lightbrighties and ScaleupNg
+- **Technical Stack section** – React, Next.js, TypeScript, Node.js, Python, Django, PostgreSQL, GraphQL, Prisma, WordPress, Shopify, Figma, Git, and more
+- **Service Packages** – Three transparent tiers (Presence, Standard, Systems) with clear deliverables and timelines
+- **Testimonials** – Client reviews and feedback
+- **Contact form** – Linked to Netlify serverless function for inquiries
 
-<br/>
+## Service Packages
 
----
+Kelvin offers three transparent service tiers, each with clear scope and timeline:
 
-<br/>
+- **Presence** – Single-page responsive website, delivered in 5–7 days. Includes contact form, basic SEO, mobile optimization, and 1 round of revisions.
 
-## Features
+- **Standard** – Multi-page website (up to 5 pages) with CMS integration, dark-mode design system, analytics setup, and 30-day post-launch support. Delivered in 10–14 days. (Most popular)
 
-- ✨ **Fully Responsive Design** - Works seamlessly on all devices
-- 🚀 **High Performance** - Optimized for speed and SEO
-- 💯 **Clean Architecture** - Semantic HTML with embedded CSS
-- 🔗 **Netlify Integration** - Serverless functions for contact form handling
-- 📱 **Mobile Optimized** - Hamburger menu and responsive navigation
-- ✅ **Accessibility** - WCAG compliant markup
+- **Systems** – Custom web applications, platforms, backend architecture, database design, e-commerce, automation workflows, and ongoing retainer options. Scoped and timed per project.
 
-<br/>
+All projects emphasize clarity, stability, and systems built for the long term—not quick fixes.
 
----
+## Project structure
 
-<br/>
-
-## Technologies Used 🛠️
-
-- **HTML5** - Semantic structure
-- **CSS3** - Modern styling with CSS variables
-- **JavaScript** - Interactive features
-- **Netlify Functions** - Serverless backend for form handling
-
-
-
-<br/>
-
----
-
-<br/>
-
-## Project Structure 📁
-
-```
+```text
 .
-├── index.html                 # Main portfolio page
+├── index.html                 # Main portfolio page and embedded styles/scripts
 ├── assets/
-│   └── kelvin.jpg            # Profile image
+│   └── kelvin.jpg            # Profile image used in the hero section
 ├── netlify/
 │   └── functions/
-│       └── contact.js        # Serverless contact form handler
-├── package.json              # Project dependencies
+│       └── contact.js        # Netlify Function for handling contact form submissions
+├── package.json              # Project metadata and dependencies
 └── README.md
 ```
 
-<br/>
+## Local preview
 
----
+The site is a static HTML portfolio, so you can preview it locally by serving the project folder with a simple web server.
 
-<br/>
-
-## Getting Started 🚀
-
-### Prerequisites
-
-- Node.js (v14 or higher)
-- npm or yarn
-
-### Installation
-
-1. Clone this repository:
 ```bash
-git clone https://github.com/Nettar-Jr/Kelvin.git
-cd Kelvin
+python3 -m http.server 8000
 ```
 
-2. Install dependencies:
-```bash
-npm install
+Then open http://localhost:8000 in your browser.
+
+## Contact form setup
+
+The contact form submits to Netlify Functions through the endpoint:
+
+```text
+/.netlify/functions/contact
 ```
 
-3. Deploy to Netlify:
-   - Connect your GitHub repository to Netlify
-   - Netlify will automatically build and deploy on push to main branch
-   - Your serverless functions in `netlify/functions/` will be automatically available
+The handler lives in [netlify/functions/contact.js](netlify/functions/contact.js). If you want email delivery enabled, update that function with your preferred mail service or provider integration.
 
-<br/>
+## Deployment
 
----
+This site is designed for Netlify deployment:
 
-<br/>
+1. Connect the GitHub repository to Netlify
+2. Deploy the site from the repository root
+3. Netlify will serve the static site and deploy the serverless function automatically
 
-## Contact Form Setup 📧
+Live site: https://kelvin.netlify.app
 
-The contact form uses Netlify Functions for handling submissions. The function is located at `netlify/functions/contact.js`.
+## Contact
 
-### To integrate email notifications:
+Based in Nigeria. Working with clients across industries and continents. If you have a clear problem and need someone who will trace it to its root before writing a single line of code, here's how to reach Alabi:
 
-You can configure email sending using one of these services:
-- **SendGrid** - Email API service
-- **Mailgun** - Transactional email service
-- **AWS SES** - Amazon's email service
-- **Netlify Forms** - Built-in form handling
-
-Simply update the `contact.js` function with your chosen service's API credentials.
-
-<br/>
-
----
-
-<br/>
-
-## Deployment 🌐
-
-This site is optimized for **Netlify** deployment:
-
-1. Push your changes to GitHub
-2. Netlify will automatically detect changes and redeploy
-3. Serverless functions are automatically deployed with your site
-4. No additional configuration needed
-
-**Live Site**: https://kelvin.netlify.app
-
-<br/>
-
----
-
-<br/>
-
-## Sections 📑
-
-### Navigation
-- Home
-- About Me
-- Work/Projects
-- Skills
-- Services/Packages
-- Contact
-
-### Key Sections
-
-**Hero Section** - Introduction and call-to-action  
-**About Me** - Background and expertise  
-**Work** - Showcase of projects and case studies  
-**Skills** - Technical and professional skills  
-**Services** - Service packages and offerings  
-**Contact** - Contact form and social links
-
-<br/>
-
----
-
-<br/>
-
-## Customization 🎨
-
-To customize the portfolio:
-
-1. **Edit `index.html`** - Update content, links, and information
-2. **Modify CSS** - Inline styles are in the `<style>` tag in `index.html`
-3. **Add Projects** - Include project details in the Work section
-4. **Update Contact** - Modify email and social links in the footer
-
-<br/>
-
----
-
-<br/>
-
-## Social Links 🔗
-
-- LinkedIn: https://www.linkedin.com/in/alabi-abdulmumuni-kelvin-0679b7155/
-- GitHub: https://github.com/Nettar-Jr
-- Email: alabiabdulmumuni9@gmail.com
-
-<br/>
-
----
-
-<br/>
-
-## License 📄
-
-This project is my personal portfolio. All content and design are proprietary and owned by Alabi Abdulmumuni Kelvin.
-
-For inquiries or collaborations, please contact me via email or LinkedIn.
+- **Email:** alabiabdulmumuni9@gmail.com
+- **LinkedIn:** https://www.linkedin.com/in/alabi-abdulmumuni-kelvin-0679b7155/
+- **GitHub:** https://github.com/Nettar-Jr
+- **WhatsApp:** https://wa.me/2348134900669
 
